@@ -7,15 +7,10 @@ import 'package:flutter/material.dart';
 export 'custom_dropdown.dart';
 
 part 'animated_section.dart';
-
 part 'dropdown_field.dart';
-
 part 'dropdown_overlay/dropdown_overlay.dart';
-
 part 'dropdown_overlay/widgets/items_list.dart';
-
 part 'dropdown_overlay/widgets/search_field.dart';
-
 part 'overlay_builder.dart';
 
 enum _SearchType { onListData, onRequestData }
@@ -38,6 +33,7 @@ class CustomDropdown extends StatefulWidget {
   final Function(String)? onChanged;
   final bool? excludeSelected;
   final Color? fillColor;
+  final InputDecoration? decoration;
   final bool? canCloseOutsideBounds;
   final bool? hideSelectedFieldWhenOpen;
   final Future<List<String>> Function(String)? futureRequest;
@@ -67,6 +63,7 @@ class CustomDropdown extends StatefulWidget {
     this.listItemBuilder,
     this.fieldSuffixIcon,
     this.onChanged,
+    this.decoration,
     this.excludeSelected = true,
     this.fillColor = Colors.white,
   })  : assert(items!.isNotEmpty, 'Items list must contain at least one item.'),
@@ -103,6 +100,7 @@ class CustomDropdown extends StatefulWidget {
     this.borderSide,
     this.fieldSuffixIcon,
     this.onChanged,
+    this.decoration,
     this.excludeSelected = true,
     this.canCloseOutsideBounds = true,
     this.hideSelectedFieldWhenOpen = false,
@@ -141,6 +139,7 @@ class CustomDropdown extends StatefulWidget {
     this.borderSide,
     this.fieldSuffixIcon,
     this.onChanged,
+    this.decoration,
     this.excludeSelected = true,
     this.canCloseOutsideBounds = true,
     this.hideSelectedFieldWhenOpen = false,
@@ -188,8 +187,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
           listItemBuilder: widget.listItemBuilder,
           layerLink: layerLink,
           hideOverlay: hideCallback,
-          headerStyle:
-              widget.controller.text.isNotEmpty ? selectedStyle : hintStyle,
+          headerStyle: widget.controller.text.isNotEmpty ? selectedStyle : hintStyle,
           hintText: hintText,
           listItemStyle: widget.listItemStyle,
           excludeSelected: widget.excludeSelected,
@@ -215,6 +213,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
             hintStyle: hintStyle,
             hintText: hintText,
             suffixIcon: widget.fieldSuffixIcon,
+            decoration: widget.decoration,
             onChanged: widget.onChanged,
             fillColor: widget.fillColor,
           ),

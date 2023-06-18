@@ -24,6 +24,7 @@ class _DropDownField extends StatefulWidget {
   final BorderRadius? borderRadius;
   final Widget? suffixIcon;
   final Color? fillColor;
+  final InputDecoration? decoration;
 
   const _DropDownField({
     Key? key,
@@ -40,6 +41,7 @@ class _DropDownField extends StatefulWidget {
     this.errorBorderSide,
     this.borderRadius,
     this.fillColor,
+    this.decoration,
   }) : super(key: key);
 
   @override
@@ -106,21 +108,22 @@ class _DropDownFieldState extends State<_DropDownField> {
       onTap: widget.onTap,
       onChanged: widget.onChanged,
       style: widget.style,
-      decoration: InputDecoration(
-        isDense: true,
-        contentPadding: _contentPadding,
-        suffixIcon: widget.suffixIcon ?? _textFieldIcon,
-        hintText: widget.hintText,
-        hintStyle: widget.hintStyle,
-        fillColor: widget.fillColor,
-        filled: true,
-        errorStyle: widget.errorText != null ? widget.errorStyle : _noTextStyle,
-        border: border,
-        enabledBorder: border,
-        focusedBorder: border,
-        errorBorder: errorBorder,
-        focusedErrorBorder: errorBorder,
-      ),
+      decoration: widget.decoration ??
+          InputDecoration(
+            isDense: true,
+            contentPadding: _contentPadding,
+            suffixIcon: widget.suffixIcon ?? _textFieldIcon,
+            hintText: widget.hintText,
+            hintStyle: widget.hintStyle,
+            fillColor: widget.fillColor,
+            filled: true,
+            errorStyle: widget.errorText != null ? widget.errorStyle : _noTextStyle,
+            border: border,
+            enabledBorder: border,
+            focusedBorder: border,
+            errorBorder: errorBorder,
+            focusedErrorBorder: errorBorder,
+          ),
     );
   }
 }
