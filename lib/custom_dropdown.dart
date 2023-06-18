@@ -195,6 +195,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
           searchType: widget.searchType,
           futureRequest: widget.futureRequest,
           futureRequestDelay: widget.futureRequestDelay,
+          borderRadius: widget.borderRadius,
           hideSelectedFieldWhenOpen: widget.hideSelectedFieldWhenOpen,
         );
       },
