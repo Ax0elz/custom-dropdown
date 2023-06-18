@@ -108,7 +108,7 @@ class _DropDownFieldState extends State<_DropDownField> {
       onTap: widget.onTap,
       onChanged: widget.onChanged,
       style: widget.style,
-      decoration: widget.decoration ??
+      decoration: widget.decoration?.copyWith(suffixIcon: _textFieldIcon) ??
           InputDecoration(
             isDense: true,
             contentPadding: _contentPadding,
