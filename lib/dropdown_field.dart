@@ -89,12 +89,14 @@ class _DropDownFieldState extends State<_DropDownField> {
   @override
   Widget build(BuildContext context) {
     final border = OutlineInputBorder(
-      borderRadius: widget.borderRadius ?? BorderRadius.circular(12),
+      borderRadius: widget.borderRadius ??
+          const SmoothBorderRadius.all(SmoothRadius(cornerRadius: 10, cornerSmoothing: .8)),
       borderSide: widget.borderSide ?? _borderSide,
     );
 
     final errorBorder = OutlineInputBorder(
-      borderRadius: widget.borderRadius ?? BorderRadius.circular(12),
+      borderRadius: widget.borderRadius ??
+          const SmoothBorderRadius.all(SmoothRadius(cornerRadius: 10, cornerSmoothing: .8)),
       borderSide: widget.errorBorderSide ?? _errorBorderSide,
     );
 

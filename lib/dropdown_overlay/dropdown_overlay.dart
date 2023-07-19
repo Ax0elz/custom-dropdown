@@ -112,7 +112,8 @@ class _DropdownOverlayState extends State<_DropdownOverlay> {
     final onSearch = widget.searchType != null;
 
     // border radius
-    final borderRadius = BorderRadius.circular(12);
+    const borderRadius =
+        SmoothBorderRadius.all(SmoothRadius(cornerRadius: 10, cornerSmoothing: .8));
 
     // overlay icon
     final overlayIcon = Icon(

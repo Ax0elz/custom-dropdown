@@ -2,6 +2,7 @@ library animated_custom_dropdown;
 
 import 'dart:async';
 
+import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 
 export 'custom_dropdown.dart';
