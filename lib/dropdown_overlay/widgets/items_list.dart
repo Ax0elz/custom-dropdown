@@ -36,10 +36,12 @@ class _ItemsList<T> extends StatelessWidget {
             color: Colors.transparent,
             child: InkWell(
               splashColor: Colors.transparent,
-              highlightColor: Colors.grey[200],
+              highlightColor: Theme.of(context).colorScheme.outline,
               onTap: () => onItemSelect(items[index]),
               child: Container(
-                color: selected ? Colors.grey[100] : Colors.transparent,
+                color: selected
+                    ? Theme.of(context).colorScheme.secondary.withOpacity(.1)
+                    : Colors.transparent,
                 padding: _listItemPadding,
                 child: listItemBuilder(context, items[index]),
               ),
