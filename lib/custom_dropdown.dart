@@ -26,6 +26,8 @@ mixin CustomDropdownListFilter {
 
 const _defaultBorderRadius =
     SmoothBorderRadius.all(SmoothRadius(cornerRadius: 5, cornerSmoothing: .8));
+const _defaultBorderRadiusOverlay =
+    SmoothBorderRadius.all(SmoothRadius(cornerRadius: 10, cornerSmoothing: .8));
 
 final Border _defaultErrorBorder = Border.all(
   color: _defaultErrorColor,

@@ -6,9 +6,9 @@ const _defaultOverlayIconUp = Icon(
   size: 20,
 );
 
-const _headerPadding = EdgeInsets.all(8.0);
+const _headerPadding = EdgeInsets.all(12.0);
 const _overlayOuterPadding = EdgeInsets.only(bottom: 12, left: 12, right: 12);
-const _overlayShadowOffset = Offset(0, 6);
+
 const _listItemPadding = EdgeInsets.symmetric(vertical: 12, horizontal: 16);
 
 class _DropdownOverlay<T> extends StatefulWidget {
@@ -211,7 +211,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                 decoration: BoxDecoration(
                   color: widget.fillColor ?? Theme.of(context).colorScheme.background,
                   border: widget.border,
-                  borderRadius: widget.borderRadius ?? _defaultBorderRadius,
+                  borderRadius: widget.borderRadius ?? _defaultBorderRadiusOverlay,
                   boxShadow: [
                     BoxShadow(
                       color: Theme.of(context).brightness == Brightness.light
@@ -237,7 +237,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                               : 225
                           : null,
                       child: ClipRRect(
-                        borderRadius: widget.borderRadius ?? _defaultBorderRadius,
+                        borderRadius: widget.borderRadius ?? _defaultBorderRadiusOverlay,
                         child: NotificationListener<OverscrollIndicatorNotification>(
                           onNotification: (notification) {
                             notification.disallowIndicator();
