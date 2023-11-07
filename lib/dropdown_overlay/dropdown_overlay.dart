@@ -254,23 +254,31 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 if (!widget.hideSelectedFieldWhenOpen!)
-                                  Padding(
-                                    padding: _headerPadding,
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                          child: selectedItem != null
-                                              ? widget.headerBuilder != null
-                                                  ? widget.headerBuilder!(
-                                                      context, selectedItem as T)
-                                                  : defaultHeaderBuilder(context, selectedItem as T)
-                                              : widget.hintBuilder != null
-                                                  ? widget.hintBuilder!(context, widget.hintText)
-                                                  : defaultHintBuilder(context, widget.hintText),
-                                        ),
-                                        const SizedBox(width: 12),
-                                        widget.suffixIcon ?? _defaultOverlayIconUp,
-                                      ],
+                                  Container(
+                                    padding: const EdgeInsets.all(4),
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).colorScheme.primary.withOpacity(.1),
+                                      borderRadius: widget.borderRadius ?? _defaultBorderRadius,
+                                    ),
+                                    child: Padding(
+                                      padding: _headerPadding,
+                                      child: Row(
+                                        children: [
+                                          Expanded(
+                                            child: selectedItem != null
+                                                ? widget.headerBuilder != null
+                                                    ? widget.headerBuilder!(
+                                                        context, selectedItem as T)
+                                                    : defaultHeaderBuilder(
+                                                        context, selectedItem as T)
+                                                : widget.hintBuilder != null
+                                                    ? widget.hintBuilder!(context, widget.hintText)
+                                                    : defaultHintBuilder(context, widget.hintText),
+                                          ),
+                                          const SizedBox(width: 12),
+                                          widget.suffixIcon ?? _defaultOverlayIconUp,
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 if (onSearch && widget.searchType == _SearchType.onListData)

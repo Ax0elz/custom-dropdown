@@ -33,7 +33,7 @@ class _ItemsList<T> extends StatelessWidget {
         itemBuilder: (_, index) {
           final selected = !excludeSelected && selectedItem == items[index];
           return Padding(
-            padding: const EdgeInsets.all(2.0),
+            padding: const EdgeInsets.all(4.0),
             child: Material(
               borderRadius: _defaultBorderRadius,
               color: Colors.transparent,
