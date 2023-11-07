@@ -255,9 +255,10 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                               children: [
                                 if (!widget.hideSelectedFieldWhenOpen!)
                                   Container(
-                                    padding: const EdgeInsets.all(4),
+                                    margin: const EdgeInsets.all(4),
                                     decoration: BoxDecoration(
-                                      color: Theme.of(context).colorScheme.primary.withOpacity(.1),
+                                      color:
+                                          Theme.of(context).colorScheme.secondary.withOpacity(.1),
                                       borderRadius: widget.borderRadius ?? _defaultBorderRadius,
                                     ),
                                     child: Padding(
