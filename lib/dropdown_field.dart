@@ -59,10 +59,7 @@ class _DropDownFieldState<T> extends State<_DropDownField<T>> {
       result.toString(),
       maxLines: widget.maxlines,
       overflow: TextOverflow.ellipsis,
-      style: const TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
-      ),
+      style: Theme.of(context).textTheme.bodyLarge,
     );
   }
 
@@ -71,10 +68,7 @@ class _DropDownFieldState<T> extends State<_DropDownField<T>> {
       hint,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
-      style: const TextStyle(
-        fontSize: 16,
-        color: Color(0xFFA7A7A7),
-      ),
+      style: Theme.of(context).textTheme.bodyMedium,
     );
   }
 

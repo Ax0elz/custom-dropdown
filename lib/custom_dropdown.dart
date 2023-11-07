@@ -183,8 +183,8 @@ class CustomDropdown<T> extends StatefulWidget {
     this.canCloseOutsideBounds = true,
     this.hideSelectedFieldWhenExpanded = false,
     this.excludeSelected = true,
-    this.closedFillColor = Colors.white,
-    this.expandedFillColor = Colors.white,
+    this.closedFillColor,
+    this.expandedFillColor,
   })  : assert(
           items!.isNotEmpty,
           'Items list must contain at least one item.',
@@ -225,8 +225,8 @@ class CustomDropdown<T> extends StatefulWidget {
     this.excludeSelected = true,
     this.canCloseOutsideBounds = true,
     this.hideSelectedFieldWhenExpanded = false,
-    this.closedFillColor = Colors.white,
-    this.expandedFillColor = Colors.white,
+    this.closedFillColor,
+    this.expandedFillColor,
   })  : assert(
           items!.isNotEmpty,
           'Items list must contain at least one item.',
@@ -268,8 +268,8 @@ class CustomDropdown<T> extends StatefulWidget {
     this.excludeSelected = true,
     this.canCloseOutsideBounds = true,
     this.hideSelectedFieldWhenExpanded = false,
-    this.closedFillColor = Colors.white,
-    this.expandedFillColor = Colors.white,
+    this.closedFillColor,
+    this.expandedFillColor,
   }) : _searchType = _SearchType.onRequestData;
 
   @override
@@ -347,7 +347,7 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
                 futureRequest: widget.futureRequest,
                 futureRequestDelay: widget.futureRequestDelay,
                 hideSelectedFieldWhenOpen: widget.hideSelectedFieldWhenExpanded,
-                fillColor: widget.expandedFillColor,
+                fillColor: widget.expandedFillColor ?? Theme.of(context).colorScheme.surface,
                 suffixIcon: widget.expandedSuffixIcon,
                 maxlines: widget.maxlines,
               );
@@ -368,7 +368,7 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
                   hintBuilder: widget.hintBuilder,
                   headerBuilder: widget.headerBuilder,
                   suffixIcon: widget.closedSuffixIcon,
-                  fillColor: widget.closedFillColor,
+                  fillColor: widget.closedFillColor ?? Theme.of(context).colorScheme.background,
                   maxlines: widget.maxlines,
                 ),
               );
