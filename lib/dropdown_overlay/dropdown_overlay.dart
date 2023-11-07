@@ -214,9 +214,12 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                   borderRadius: widget.borderRadius ?? _defaultBorderRadius,
                   boxShadow: [
                     BoxShadow(
-                      blurRadius: 24.0,
-                      color: Colors.black.withOpacity(.08),
-                      offset: _overlayShadowOffset,
+                      color: Theme.of(context).brightness == Brightness.light
+                          ? const Color(0xFF7090b0).withOpacity(.24)
+                          : Colors.black.withOpacity(.2),
+                      offset: const Offset(0, 4),
+                      blurRadius: 25,
+                      spreadRadius: 0,
                     ),
                   ],
                 ),
