@@ -204,7 +204,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                 decoration: BoxDecoration(
                   color: widget.fillColor ?? Theme.of(context).colorScheme.background,
                   border: widget.border,
-                  borderRadius: widget.borderRadius ?? _defaultBorderRadiusOverlay,
+                  borderRadius: widget.borderRadius ?? _defaultBorderRadius,
                   boxShadow: [
                     BoxShadow(
                       color: Theme.of(context).brightness == Brightness.light
@@ -230,7 +230,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                               : 225
                           : null,
                       child: ClipRRect(
-                        borderRadius: widget.borderRadius ?? _defaultBorderRadiusOverlay,
+                        borderRadius: widget.borderRadius ?? _defaultBorderRadius,
                         child: NotificationListener<OverscrollIndicatorNotification>(
                           onNotification: (notification) {
                             notification.disallowIndicator();

@@ -32,18 +32,26 @@ class _ItemsList<T> extends StatelessWidget {
         itemCount: items.length,
         itemBuilder: (_, index) {
           final selected = !excludeSelected && selectedItem == items[index];
-          return Material(
-            color: Colors.transparent,
-            child: InkWell(
-              splashColor: Colors.transparent,
-              highlightColor: Theme.of(context).colorScheme.outline,
-              onTap: () => onItemSelect(items[index]),
-              child: Container(
-                color: selected
-                    ? Theme.of(context).colorScheme.secondary.withOpacity(.1)
-                    : Colors.transparent,
-                padding: _listItemPadding,
-                child: listItemBuilder(context, items[index]),
+          return Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: Material(
+              borderRadius: _defaultBorderRadius,
+              color: Colors.transparent,
+              child: InkWell(
+                borderRadius: _defaultBorderRadius,
+                splashColor: Colors.transparent,
+                highlightColor: Theme.of(context).colorScheme.outline,
+                onTap: () => onItemSelect(items[index]),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: _defaultBorderRadius,
+                  ),
+                  color: selected
+                      ? Theme.of(context).colorScheme.secondary.withOpacity(.1)
+                      : Colors.transparent,
+                  padding: _listItemPadding,
+                  child: listItemBuilder(context, items[index]),
+                ),
               ),
             ),
           );
