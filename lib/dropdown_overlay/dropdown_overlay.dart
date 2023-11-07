@@ -30,7 +30,6 @@ class _DropdownOverlay extends StatefulWidget {
   final _ListItemBuilder? listItemBuilder;
 
   const _DropdownOverlay({
-    Key? key,
     required this.items,
     required this.controller,
     required this.size,
@@ -47,7 +46,7 @@ class _DropdownOverlay extends StatefulWidget {
     this.futureRequestDelay,
     this.listItemBuilder,
     this.borderRadius,
-  }) : super(key: key);
+  });
 
   @override
   _DropdownOverlayState createState() => _DropdownOverlayState();

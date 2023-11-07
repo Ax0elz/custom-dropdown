@@ -27,7 +27,6 @@ class _DropDownField extends StatefulWidget {
   final InputDecoration? decoration;
 
   const _DropDownField({
-    Key? key,
     required this.controller,
     required this.onTap,
     this.onChanged,
@@ -42,7 +41,7 @@ class _DropDownField extends StatefulWidget {
     this.borderRadius,
     this.fillColor,
     this.decoration,
-  }) : super(key: key);
+  });
 
   @override
   State<_DropDownField> createState() => _DropDownFieldState();

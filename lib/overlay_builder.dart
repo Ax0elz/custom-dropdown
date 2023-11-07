@@ -5,10 +5,9 @@ class _OverlayBuilder extends StatefulWidget {
   final Widget Function(VoidCallback) child;
 
   const _OverlayBuilder({
-    Key? key,
     required this.overlay,
     required this.child,
-  }) : super(key: key);
+  });
 
   @override
   _OverlayBuilderState createState() => _OverlayBuilderState();

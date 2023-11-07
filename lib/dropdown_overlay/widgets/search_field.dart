@@ -10,26 +10,22 @@ class _SearchField extends StatefulWidget {
   final ValueChanged<bool>? mayFoundResult;
 
   const _SearchField.forListData({
-    Key? key,
     required this.items,
     required this.onSearchedItems,
   })  : searchType = _SearchType.onListData,
         futureRequest = null,
         futureRequestDelay = null,
         onFutureRequestLoading = null,
-        mayFoundResult = null,
-        super(key: key);
+        mayFoundResult = null;
 
   const _SearchField.forRequestData({
-    Key? key,
     required this.items,
     required this.onSearchedItems,
     required this.futureRequest,
     required this.futureRequestDelay,
     required this.onFutureRequestLoading,
     required this.mayFoundResult,
-  })  : searchType = _SearchType.onRequestData,
-        super(key: key);
+  }) : searchType = _SearchType.onRequestData;
 
   @override
   State<_SearchField> createState() => _SearchFieldState();
@@ -44,8 +40,7 @@ class _SearchFieldState extends State<_SearchField> {
   @override
   void initState() {
     super.initState();
-    if (widget.searchType == _SearchType.onRequestData &&
-        widget.items.isEmpty) {
+    if (widget.searchType == _SearchType.onRequestData && widget.items.isEmpty) {
       focusNode.requestFocus();
     }
   }
@@ -58,9 +53,8 @@ class _SearchFieldState extends State<_SearchField> {
   }
 
   void onSearch(String str) {
-    final result = widget.items
-        .where((item) => item.toLowerCase().contains(str.toLowerCase()))
-        .toList();
+    final result =
+        widget.items.where((item) => item.toLowerCase().contains(str.toLowerCase())).toList();
     widget.onSearchedItems(result);
   }
 
@@ -107,8 +101,7 @@ class _SearchFieldState extends State<_SearchField> {
 
             if (widget.futureRequestDelay != null) {
               _delayTimer?.cancel();
-              _delayTimer =
-                  Timer(widget.futureRequestDelay ?? Duration.zero, () {
+              _delayTimer = Timer(widget.futureRequestDelay ?? Duration.zero, () {
                 searchRequest(val);
               });
             } else {

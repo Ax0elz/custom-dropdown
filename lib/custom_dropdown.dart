@@ -49,7 +49,7 @@ class CustomDropdown extends StatefulWidget {
   final _ListItemBuilder? listItemBuilder;
 
   CustomDropdown({
-    Key? key,
+    super.key,
     required this.items,
     required this.controller,
     this.hintText,
@@ -82,11 +82,10 @@ class CustomDropdown extends StatefulWidget {
         futureRequest = null,
         futureRequestDelay = null,
         canCloseOutsideBounds = true,
-        hideSelectedFieldWhenOpen = false,
-        super(key: key);
+        hideSelectedFieldWhenOpen = false;
 
   CustomDropdown.search({
-    Key? key,
+    super.key,
     required this.items,
     required this.controller,
     this.hintText,
@@ -119,11 +118,10 @@ class CustomDropdown extends StatefulWidget {
         ),
         searchType = _SearchType.onListData,
         futureRequest = null,
-        futureRequestDelay = null,
-        super(key: key);
+        futureRequestDelay = null;
 
   const CustomDropdown.searchRequest({
-    Key? key,
+    super.key,
     required this.controller,
     required this.futureRequest,
     this.futureRequestDelay,
@@ -151,8 +149,7 @@ class CustomDropdown extends StatefulWidget {
               (listItemBuilder != null && listItemStyle == null),
           'Cannot use both listItemBuilder and listItemStyle.',
         ),
-        searchType = _SearchType.onRequestData,
-        super(key: key);
+        searchType = _SearchType.onRequestData;
 
   @override
   State<CustomDropdown> createState() => _CustomDropdownState();
