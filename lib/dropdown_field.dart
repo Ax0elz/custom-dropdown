@@ -86,7 +86,8 @@ class _DropDownFieldState<T> extends State<_DropDownField<T>> {
         padding: _headerPadding,
         decoration: BoxDecoration(
           color: widget.fillColor ?? Theme.of(context).colorScheme.background,
-          border: widget.border,
+          border:
+              widget.border ?? Border.all(color: Theme.of(context).colorScheme.outline, width: 1),
           borderRadius: widget.borderRadius ?? _defaultBorderRadius,
         ),
         child: Row(
