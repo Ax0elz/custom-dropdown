@@ -258,7 +258,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                     margin: const EdgeInsets.all(4),
                                     decoration: BoxDecoration(
                                       color:
-                                          Theme.of(context).colorScheme.secondary.withOpacity(.1),
+                                          Theme.of(context).colorScheme.secondary.withOpacity(.05),
                                       borderRadius: widget.borderRadius ?? _defaultBorderRadius,
                                     ),
                                     child: Padding(
