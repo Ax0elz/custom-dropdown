@@ -25,7 +25,7 @@ mixin CustomDropdownListFilter {
 }
 
 const _defaultBorderRadius =
-    SmoothBorderRadius.all(SmoothRadius(cornerRadius: 10, cornerSmoothing: .8));
+    SmoothBorderRadius.all(SmoothRadius(cornerRadius: 5, cornerSmoothing: .8));
 
 final Border _defaultErrorBorder = Border.all(
   color: _defaultErrorColor,
@@ -69,8 +69,6 @@ class CustomDropdown<T> extends StatefulWidget {
 
   /// Text that suggests what to search in the search field.
   final String? searchHintText;
-
-  final InputDecoration? decoration;
 
   /// Border for closed state of [CustomDropdown].
   final BoxBorder? closedBorder;
@@ -179,7 +177,6 @@ class CustomDropdown<T> extends StatefulWidget {
     this.headerBuilder,
     this.hintBuilder,
     this.onChanged,
-    this.decoration,
     this.maxlines = 1,
     this.canCloseOutsideBounds = true,
     this.hideSelectedFieldWhenExpanded = false,
@@ -222,7 +219,6 @@ class CustomDropdown<T> extends StatefulWidget {
     this.expandedBorder,
     this.expandedBorderRadius,
     this.onChanged,
-    this.decoration,
     this.maxlines = 1,
     this.excludeSelected = true,
     this.canCloseOutsideBounds = true,
@@ -266,7 +262,6 @@ class CustomDropdown<T> extends StatefulWidget {
     this.closedSuffixIcon,
     this.expandedSuffixIcon,
     this.onChanged,
-    this.decoration,
     this.maxlines = 1,
     this.excludeSelected = true,
     this.canCloseOutsideBounds = true,
@@ -309,12 +304,11 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
       },
       builder: (FormFieldState<T> formFieldState) {
         return InputDecorator(
-          decoration: widget.decoration ??
-              InputDecoration(
-                errorStyle: widget.errorStyle ?? _defaultErrorStyle,
-                errorText: formFieldState.errorText,
-                border: InputBorder.none,
-              ),
+          decoration: InputDecoration(
+            errorStyle: widget.errorStyle ?? _defaultErrorStyle,
+            errorText: formFieldState.errorText,
+            border: InputBorder.none,
+          ),
           child: _OverlayBuilder(
             overlay: (size, hideCallback) {
               return _DropdownOverlay<T>(
