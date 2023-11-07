@@ -43,12 +43,12 @@ class _ItemsList<T> extends StatelessWidget {
                 highlightColor: Theme.of(context).colorScheme.outline,
                 onTap: () => onItemSelect(items[index]),
                 child: Container(
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     borderRadius: _defaultBorderRadius,
+                    color: selected
+                        ? Theme.of(context).colorScheme.secondary.withOpacity(.1)
+                        : Colors.transparent,
                   ),
-                  color: selected
-                      ? Theme.of(context).colorScheme.secondary.withOpacity(.1)
-                      : Colors.transparent,
                   padding: _listItemPadding,
                   child: listItemBuilder(context, items[index]),
                 ),
