@@ -1,10 +1,10 @@
 part of '../custom_dropdown.dart';
 
-const _defaultOverlayIconUp = Icon(
-  Icons.keyboard_arrow_up_rounded,
-  color: Colors.black,
-  size: 20,
-);
+Icon _textFieldIconUp(BuildContext context) => Icon(
+      Icons.keyboard_arrow_up_rounded,
+      color: Theme.of(context).colorScheme.onBackground,
+      size: 20,
+    );
 
 const _headerPadding = EdgeInsets.all(12.0);
 const _overlayOuterPadding = EdgeInsets.only(bottom: 12, left: 12, right: 12);
@@ -203,7 +203,9 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   color: widget.fillColor ?? Theme.of(context).colorScheme.background,
-                  border: widget.border,
+                  border: widget.border ??
+                      Border.all(
+                          color: Theme.of(context).colorScheme.outline.withOpacity(.06), width: 1),
                   borderRadius: widget.borderRadius ?? _defaultBorderRadius,
                   boxShadow: [
                     BoxShadow(
@@ -277,7 +279,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                                     : defaultHintBuilder(context, widget.hintText),
                                           ),
                                           const SizedBox(width: 12),
-                                          widget.suffixIcon ?? _defaultOverlayIconUp,
+                                          widget.suffixIcon ?? _textFieldIconUp(context),
                                         ],
                                       ),
                                     ),
@@ -308,7 +310,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                               },
                                             ),
                                           ),
-                                          widget.suffixIcon ?? _defaultOverlayIconUp,
+                                          widget.suffixIcon ?? _textFieldIconUp(context),
                                           const SizedBox(width: 14),
                                         ],
                                       ),
@@ -356,7 +358,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                                   mayFoundSearchRequestResult = val,
                                             ),
                                           ),
-                                          widget.suffixIcon ?? _defaultOverlayIconUp,
+                                          widget.suffixIcon ?? _textFieldIconUp(context),
                                           const SizedBox(width: 14),
                                         ],
                                       ),
