@@ -98,7 +98,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
       result.toString(),
       maxLines: widget.maxlines,
       overflow: TextOverflow.ellipsis,
-      style: Theme.of(context).textTheme.bodyLarge,
+      style: Theme.of(context).textTheme.bodyMedium,
     );
   }
 
