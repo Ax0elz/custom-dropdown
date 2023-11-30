@@ -59,7 +59,7 @@ class _DropDownFieldState<T> extends State<_DropDownField<T>> {
       result.toString(),
       maxLines: widget.maxlines,
       overflow: TextOverflow.ellipsis,
-      style: Theme.of(context).textTheme.bodyLarge,
+      style: Theme.of(context).textTheme.bodyMedium,
     );
   }
 
