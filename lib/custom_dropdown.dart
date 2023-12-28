@@ -155,7 +155,7 @@ class CustomDropdown<T> extends StatefulWidget {
 
   final _SearchType? _searchType;
 
-  final Function(ValueNotifier)? sendBackValueNotifier;
+  final bool updateValueRemotely;
 
   CustomDropdown({
     super.key,
@@ -185,7 +185,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.excludeSelected = true,
     this.closedFillColor,
     this.expandedFillColor,
-    this.sendBackValueNotifier,
+    this.updateValueRemotely = false,
   })  : assert(
           items!.isNotEmpty,
           'Items list must contain at least one item.',
@@ -228,7 +228,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.hideSelectedFieldWhenExpanded = false,
     this.closedFillColor,
     this.expandedFillColor,
-    this.sendBackValueNotifier,
+    this.updateValueRemotely = false,
   })  : assert(
           items!.isNotEmpty,
           'Items list must contain at least one item.',
@@ -272,7 +272,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.hideSelectedFieldWhenExpanded = false,
     this.closedFillColor,
     this.expandedFillColor,
-    this.sendBackValueNotifier,
+    this.updateValueRemotely = false,
   }) : _searchType = _SearchType.onRequestData;
 
   @override
@@ -287,15 +287,20 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
   void initState() {
     super.initState();
     selectedItemNotifier = ValueNotifier(widget.initialItem);
-    if (widget.sendBackValueNotifier != null) {
-      widget.sendBackValueNotifier!(selectedItemNotifier);
-    }
   }
 
   @override
   void dispose() {
     selectedItemNotifier.dispose();
     super.dispose();
+  }
+
+  @override
+  void didUpdateWidget(covariant CustomDropdown<T> oldWidget) {
+    oldWidget.initialItem != widget.initialItem && widget.updateValueRemotely
+        ? selectedItemNotifier.value = widget.initialItem
+        : null;
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
