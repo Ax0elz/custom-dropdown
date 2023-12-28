@@ -74,13 +74,13 @@ class CustomDropdown<T> extends StatefulWidget {
   final BoxBorder? closedBorder;
 
   /// Border radius for closed state of [CustomDropdown].
-  final BorderRadius? closedBorderRadius;
+  final double? closedBorderRadius;
 
   /// Border for opened/expanded state of [CustomDropdown].
   final BoxBorder? expandedBorder;
 
   /// Border radius for opened/expanded state of [CustomDropdown].
-  final BorderRadius? expandedBorderRadius;
+  final double? expandedBorderRadius;
 
   /// A method that validates the selected item.
   /// Returns an error string to display as per the validation, or null otherwise.
@@ -90,7 +90,7 @@ class CustomDropdown<T> extends StatefulWidget {
   final BoxBorder? closedErrorBorder;
 
   /// Error border radius for closed state of [CustomDropdown].
-  final BorderRadius? closedErrorBorderRadius;
+  final double? closedErrorBorderRadius;
 
   /// The style to use for the string returning from [validator].
   final TextStyle? errorStyle;
@@ -326,7 +326,8 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
                     formFieldState.validate();
                   }
                 },
-                noResultFoundText: widget.noResultFoundText ?? 'No result found.',
+                noResultFoundText:
+                    widget.noResultFoundText ?? 'No result found.',
                 noResultFoundBuilder: widget.noResultFoundBuilder,
                 items: widget.items ?? [],
                 selectedItemNotifier: selectedItemNotifier,
@@ -346,7 +347,8 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
                 futureRequest: widget.futureRequest,
                 futureRequestDelay: widget.futureRequestDelay,
                 hideSelectedFieldWhenOpen: widget.hideSelectedFieldWhenExpanded,
-                fillColor: widget.expandedFillColor ?? Theme.of(context).colorScheme.surface,
+                fillColor: widget.expandedFillColor ??
+                    Theme.of(context).colorScheme.surface,
                 suffixIcon: widget.expandedSuffixIcon,
                 maxlines: widget.maxlines,
               );
@@ -367,7 +369,8 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
                   hintBuilder: widget.hintBuilder,
                   headerBuilder: widget.headerBuilder,
                   suffixIcon: widget.closedSuffixIcon,
-                  fillColor: widget.closedFillColor ?? Theme.of(context).colorScheme.background,
+                  fillColor: widget.closedFillColor ??
+                      Theme.of(context).colorScheme.background,
                   maxlines: widget.maxlines,
                 ),
               );

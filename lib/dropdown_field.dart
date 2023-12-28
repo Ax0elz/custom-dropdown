@@ -12,7 +12,7 @@ class _DropDownField<T> extends StatefulWidget {
   final String hintText;
   final Color? fillColor;
   final BoxBorder? border;
-  final BorderRadius? borderRadius;
+  final double? borderRadius;
   final String? errorText;
   final TextStyle? errorStyle;
   final BorderSide? errorBorderSide;
@@ -86,9 +86,13 @@ class _DropDownFieldState<T> extends State<_DropDownField<T>> {
         padding: _headerPadding,
         decoration: BoxDecoration(
           color: widget.fillColor ?? Theme.of(context).colorScheme.background,
-          border:
-              widget.border ?? Border.all(color: Theme.of(context).colorScheme.outline, width: 1),
-          borderRadius: widget.borderRadius ?? _defaultBorderRadius,
+          border: widget.border ??
+              Border.all(
+                  color: Theme.of(context).colorScheme.outline, width: 1),
+          borderRadius: widget.borderRadius != null
+              ? SmoothBorderRadius.all(SmoothRadius(
+                  cornerRadius: widget.borderRadius!, cornerSmoothing: .8))
+              : _defaultBorderRadius,
         ),
         child: Row(
           children: [
