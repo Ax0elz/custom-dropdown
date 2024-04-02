@@ -2,7 +2,7 @@ part of '../../custom_dropdown.dart';
 
 const _defaultOverlayIconUp = Icon(
   CupertinoIcons.chevron_up,
-  size: 20,
+  size: 18,
 );
 
 const _defaultHeaderPadding = EdgeInsets.all(4.0);
