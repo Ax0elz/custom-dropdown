@@ -128,7 +128,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
               maxLines: widget.maxLines,
               overflow: TextOverflow.ellipsis,
               style: widget.listItemStyle ??
-                  Theme.of(context).textTheme.bodyLarge),
+                  Theme.of(context).textTheme.bodyMedium),
         ),
         if (widget.dropdownType == _DropdownType.multipleSelect)
           Padding(
