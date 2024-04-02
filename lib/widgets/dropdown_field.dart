@@ -3,7 +3,7 @@ part of '../custom_dropdown.dart';
 // overlay icon
 const _defaultOverlayIconDown = Icon(
   Icons.keyboard_arrow_down_rounded,
-  size: 20,
+  size: 18,
 );
 
 class _DropDownField<T> extends StatefulWidget {
@@ -88,11 +88,7 @@ class _DropDownFieldState<T> extends State<_DropDownField<T>> {
       itemList != null ? itemList.join(', ') : oneItem.toString(),
       maxLines: widget.maxLines,
       overflow: TextOverflow.ellipsis,
-      style: widget.headerStyle ??
-          const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-          ),
+      style: widget.headerStyle ?? Theme.of(context).textTheme.titleSmall,
     );
   }
 
@@ -101,11 +97,7 @@ class _DropDownFieldState<T> extends State<_DropDownField<T>> {
       hint,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
-      style: widget.hintStyle ??
-          const TextStyle(
-            fontSize: 16,
-            color: Color(0xFFA7A7A7),
-          ),
+      style: widget.hintStyle ?? Theme.of(context).textTheme.labelMedium,
     );
   }
 

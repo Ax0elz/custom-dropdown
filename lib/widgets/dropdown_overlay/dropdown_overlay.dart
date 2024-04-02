@@ -5,7 +5,7 @@ const _defaultOverlayIconUp = Icon(
   size: 20,
 );
 
-const _defaultHeaderPadding = EdgeInsets.all(16.0);
+const _defaultHeaderPadding = EdgeInsets.all(4.0);
 const _overlayOuterPadding =
     EdgeInsetsDirectional.only(bottom: 12, start: 12, end: 12);
 
