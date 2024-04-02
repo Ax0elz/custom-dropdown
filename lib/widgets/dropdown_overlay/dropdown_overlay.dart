@@ -6,6 +6,8 @@ const _defaultOverlayIconUp = Icon(
 );
 
 const _defaultHeaderPadding = EdgeInsets.symmetric(vertical: 8, horizontal: 16);
+const _defaultDropdownHeaderPadding =
+    EdgeInsets.symmetric(vertical: 12, horizontal: 16);
 const _overlayOuterPadding =
     EdgeInsetsDirectional.only(bottom: 12, start: 12, end: 12);
 
@@ -339,7 +341,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                     },
                                     child: Padding(
                                       padding: widget.headerPadding ??
-                                          _defaultHeaderPadding,
+                                          _defaultDropdownHeaderPadding,
                                       child: Row(
                                         children: [
                                           Expanded(
