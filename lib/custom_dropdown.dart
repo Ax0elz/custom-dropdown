@@ -151,6 +151,8 @@ class CustomDropdown<T> extends StatefulWidget {
 
   final _DropdownType _dropdownType;
 
+  final double? borderRadius;
+
   CustomDropdown({
     super.key,
     required this.items,
@@ -180,6 +182,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.noResultFoundText,
     this.searchRequestLoadingIndicator,
     this.headerListBuilder,
+    this.borderRadius,
   })  : assert(
           items!.isNotEmpty,
           'Items list must contain at least one item.',
@@ -224,6 +227,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.onListChanged,
     this.searchRequestLoadingIndicator,
     this.headerListBuilder,
+    this.borderRadius,
   })  : assert(
           items!.isNotEmpty,
           'Items list must contain at least one item.',
@@ -265,6 +269,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.canCloseOutsideBounds = true,
     this.hideSelectedFieldWhenExpanded = false,
     this.errorStyle,
+    this.borderRadius,
   })  : _searchType = _SearchType.onRequestData,
         _dropdownType = _DropdownType.singleSelect,
         initialItems = null,
@@ -293,6 +298,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.itemsListPadding,
     this.listItemPadding,
     this.errorStyle,
+    this.borderRadius,
   })  : assert(
           items!.isNotEmpty,
           'Items list must contain at least one item.',
@@ -341,6 +347,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.itemsListPadding,
     this.listItemPadding,
     this.errorStyle,
+    this.borderRadius,
   })  : assert(
           items!.isNotEmpty,
           'Items list must contain at least one item.',
@@ -388,6 +395,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.listItemPadding,
     this.canCloseOutsideBounds = true,
     this.hideSelectedFieldWhenExpanded = false,
+    this.borderRadius,
     this.errorStyle,
   })  : _searchType = _SearchType.onRequestData,
         _dropdownType = _DropdownType.multipleSelect,
@@ -514,6 +522,10 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
                 headerPadding: widget.expandedHeaderPadding,
                 itemsListPadding: widget.itemsListPadding,
                 listItemPadding: widget.listItemPadding,
+                borderRadius: widget.borderRadius != null
+                    ? SmoothBorderRadius(
+                        cornerRadius: widget.borderRadius!, cornerSmoothing: .8)
+                    : _defaultBorderRadius,
                 searchRequestLoadingIndicator:
                     widget.searchRequestLoadingIndicator,
                 dropdownType: widget._dropdownType,
@@ -532,9 +544,9 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
                             color: Theme.of(context).colorScheme.outline,
                             width: 1,
                           ),
-                  borderRadius: decoration?.closedBorderRadius != null
+                  borderRadius: widget.borderRadius != null
                       ? SmoothBorderRadius(
-                          cornerRadius: decoration!.closedBorderRadius!,
+                          cornerRadius: widget.borderRadius!,
                           cornerSmoothing: .8)
                       : _defaultBorderRadius,
                   shadow: decoration?.closedShadow,

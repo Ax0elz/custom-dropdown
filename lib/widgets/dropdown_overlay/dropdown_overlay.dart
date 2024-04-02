@@ -37,6 +37,7 @@ class _DropdownOverlay<T> extends StatefulWidget {
   final _NoResultFoundBuilder? noResultFoundBuilder;
   final CustomDropdownDecoration? decoration;
   final _DropdownType dropdownType;
+  final BorderRadius borderRadius;
 
   const _DropdownOverlay({
     Key? key,
@@ -73,6 +74,7 @@ class _DropdownOverlay<T> extends StatefulWidget {
     required this.listItemBuilder,
     required this.headerListBuilder,
     required this.noResultFoundBuilder,
+    required this.borderRadius,
   });
 
   @override
@@ -277,11 +279,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                   color: decoration?.expandedFillColor ??
                       CustomDropdownDecoration._defaultFillColor,
                   border: decoration?.expandedBorder,
-                  borderRadius: decoration?.closedBorderRadius != null
-                      ? SmoothBorderRadius(
-                          cornerRadius: decoration!.closedBorderRadius!,
-                          cornerSmoothing: .8)
-                      : _defaultBorderRadius,
+                  borderRadius: widget.borderRadius,
                   boxShadow: decoration?.expandedShadow ??
                       [
                         BoxShadow(
@@ -307,11 +305,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                           ? widget.overlayHeight ?? (onSearch ? 270 : 225)
                           : null,
                       child: ClipRRect(
-                        borderRadius: decoration?.expandedBorderRadius != null
-                            ? SmoothBorderRadius(
-                                cornerRadius: decoration!.closedBorderRadius!,
-                                cornerSmoothing: .8)
-                            : _defaultBorderRadius,
+                        borderRadius: widget.borderRadius,
                         child: NotificationListener<
                             OverscrollIndicatorNotification>(
                           onNotification: (notification) {

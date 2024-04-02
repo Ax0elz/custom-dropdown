@@ -26,17 +26,11 @@ class CustomDropdownDecoration {
   /// Border for closed state of [CustomDropdown].
   final BoxBorder? closedBorder;
 
-  /// Border radius for closed state of [CustomDropdown].
-  final double? closedBorderRadius;
-
   /// Error border for closed state of [CustomDropdown].
   final BoxBorder? closedErrorBorder;
 
   /// Border for opened/expanded state of [CustomDropdown].
   final BoxBorder? expandedBorder;
-
-  /// Border radius for opened/expanded state of [CustomDropdown].
-  final double? expandedBorderRadius;
 
   /// The style to use for the [CustomDropdown] header hint.
   final TextStyle? hintStyle;
@@ -70,10 +64,8 @@ class CustomDropdownDecoration {
     this.closedSuffixIcon,
     this.expandedSuffixIcon,
     this.closedBorder,
-    this.closedBorderRadius,
     this.closedErrorBorder,
     this.expandedBorder,
-    this.expandedBorderRadius,
     this.hintStyle,
     this.headerStyle,
     this.noResultFoundStyle,
