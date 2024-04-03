@@ -36,8 +36,4 @@ class ListItemDecoration {
     this.selectedIconBorder,
     this.selectedIconShape,
   });
-
-  static const _defaultSplashColor = Colors.transparent;
-  static const _defaultHighlightColor = Color(0xFFEEEEEE);
-  static const _defaultSelectedColor = Color(0xFFF5F5F5);
 }

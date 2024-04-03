@@ -75,6 +75,4 @@ class CustomDropdownDecoration {
     this.searchFieldDecoration,
     this.listItemDecoration,
   });
-
-  static const Color _defaultFillColor = Colors.white;
 }
