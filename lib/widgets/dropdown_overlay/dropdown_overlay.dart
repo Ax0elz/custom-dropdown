@@ -275,7 +275,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
             offset: overlayOffset,
             child: Container(
               key: key1,
-              padding: _overlayOuterPadding,
+              // padding: _overlayOuterPadding,
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   color: decoration?.expandedFillColor ??
