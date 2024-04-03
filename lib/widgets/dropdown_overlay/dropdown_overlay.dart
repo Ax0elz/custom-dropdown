@@ -279,11 +279,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   color: decoration?.expandedFillColor ??
-                      Theme.of(context).colorScheme.outline.withOpacity(
-                            Theme.of(context).brightness == Brightness.light
-                                ? .4
-                                : .1,
-                          ),
+                      Theme.of(context).colorScheme.surface,
                   border: decoration?.expandedBorder,
                   borderRadius: widget.borderRadius,
                   boxShadow: decoration?.expandedShadow ??
