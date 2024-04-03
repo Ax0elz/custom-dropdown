@@ -25,6 +25,7 @@ class _DropDownField<T> extends StatefulWidget {
   final _HintBuilder? hintBuilder;
   final _DropdownType dropdownType;
   final _ValueNotifierList<T> selectedItemsNotifier;
+  final double? height;
 
   const _DropDownField({
     super.key,
@@ -48,6 +49,7 @@ class _DropDownField<T> extends StatefulWidget {
     this.hintBuilder,
     this.suffixIcon,
     this.headerPadding,
+    this.height,
   });
 
   @override
@@ -117,6 +119,7 @@ class _DropDownFieldState<T> extends State<_DropDownField<T>> {
     return GestureDetector(
       onTap: widget.onTap,
       child: Container(
+        height: widget.height,
         padding: widget.headerPadding ?? _defaultHeaderPadding,
         decoration: BoxDecoration(
           color: widget.fillColor ??

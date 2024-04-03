@@ -152,6 +152,7 @@ class CustomDropdown<T> extends StatefulWidget {
   final _DropdownType _dropdownType;
 
   final double? borderRadius;
+  final double? height;
 
   CustomDropdown({
     super.key,
@@ -183,6 +184,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.searchRequestLoadingIndicator,
     this.headerListBuilder,
     this.borderRadius,
+    this.height,
   })  : assert(
           items!.isNotEmpty,
           'Items list must contain at least one item.',
@@ -228,6 +230,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.searchRequestLoadingIndicator,
     this.headerListBuilder,
     this.borderRadius,
+    this.height,
   })  : assert(
           items!.isNotEmpty,
           'Items list must contain at least one item.',
@@ -270,6 +273,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.hideSelectedFieldWhenExpanded = false,
     this.errorStyle,
     this.borderRadius,
+    this.height,
   })  : _searchType = _SearchType.onRequestData,
         _dropdownType = _DropdownType.singleSelect,
         initialItems = null,
@@ -299,6 +303,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.listItemPadding,
     this.errorStyle,
     this.borderRadius,
+    this.height,
   })  : assert(
           items!.isNotEmpty,
           'Items list must contain at least one item.',
@@ -348,6 +353,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.listItemPadding,
     this.errorStyle,
     this.borderRadius,
+    this.height,
   })  : assert(
           items!.isNotEmpty,
           'Items list must contain at least one item.',
@@ -397,6 +403,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.hideSelectedFieldWhenExpanded = false,
     this.borderRadius,
     this.errorStyle,
+    this.height,
   })  : _searchType = _SearchType.onRequestData,
         _dropdownType = _DropdownType.multipleSelect,
         initialItem = null,
@@ -562,6 +569,7 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
                   headerPadding: widget.closedHeaderPadding,
                   dropdownType: widget._dropdownType,
                   selectedItemsNotifier: selectedItemsNotifier,
+                  height: widget.height,
                 ),
               );
             },
