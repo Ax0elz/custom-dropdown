@@ -264,7 +264,6 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
             : const SizedBox(height: 12);
 
     final child = Stack(
-      fit: StackFit.passthrough,
       children: [
         Positioned(
           width: widget.size.width + 24,
