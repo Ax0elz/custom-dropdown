@@ -51,13 +51,13 @@ class DecoratedDropdown extends StatelessWidget {
       decoration: CustomDropdownDecoration(
         closedFillColor: Colors.black,
         expandedFillColor: Colors.black,
-        closedSuffixIcon: const Icon(
+        closedSuffixIcon: Icon(
           Icons.keyboard_arrow_down,
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.primary,
         ),
-        expandedSuffixIcon: const Icon(
+        expandedSuffixIcon: Icon(
           Icons.keyboard_arrow_up,
-          color: Colors.grey,
+          color: Theme.of(context).colorScheme.primary,
         ),
         closedShadow: [
           const BoxShadow(
@@ -67,10 +67,11 @@ class DecoratedDropdown extends StatelessWidget {
           ),
         ],
         searchFieldDecoration: SearchFieldDecoration(
-          fillColor: Colors.grey[700],
-          prefixIcon: Icon(Icons.search, color: Colors.grey[400]),
-          hintStyle: TextStyle(color: Colors.grey[400]),
-          textStyle: const TextStyle(color: Colors.white),
+          fillColor: Theme.of(context).colorScheme.surface,
+          prefixIcon: Icon(Icons.search,
+              color: Theme.of(context).colorScheme.onSurface),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface),
+          textStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface),
           border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(24)),
           ),
@@ -80,7 +81,8 @@ class DecoratedDropdown extends StatelessWidget {
           suffixIcon: (onClear) {
             return GestureDetector(
               onTap: onClear,
-              child: Icon(Icons.close, color: Colors.grey[400]),
+              child: Icon(Icons.close,
+                  color: Theme.of(context).colorScheme.onSurface),
             );
           },
         ),
