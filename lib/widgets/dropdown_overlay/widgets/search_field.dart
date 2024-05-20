@@ -132,7 +132,7 @@ class _SearchFieldState<T> extends State<_SearchField<T>> {
         decoration: InputDecoration(
           filled: true,
           fillColor: widget.decoration?.fillColor ??
-              SearchFieldDecoration._defaultFillColor,
+              Theme.of(context).colorScheme.surface,
           constraints: widget.decoration?.constraints ??
               const BoxConstraints.tightFor(height: 40),
           contentPadding:

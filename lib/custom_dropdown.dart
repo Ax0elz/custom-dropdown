@@ -28,21 +28,8 @@ enum _DropdownType { singleSelect, multipleSelect }
 
 enum _SearchType { onListData, onRequestData }
 
-const _defaultErrorColor = Colors.red;
-
 const _defaultBorderRadius =
     SmoothBorderRadius.all(SmoothRadius(cornerRadius: 5, cornerSmoothing: .8));
-
-final Border _defaultErrorBorder = Border.all(
-  color: _defaultErrorColor,
-  width: 1,
-);
-
-const _defaultErrorStyle = TextStyle(
-  color: _defaultErrorColor,
-  fontSize: 14,
-  height: 0.5,
-);
 
 class CustomDropdown<T> extends StatefulWidget {
   /// The list of items user can select.
