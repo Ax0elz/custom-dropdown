@@ -692,7 +692,11 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
                     border: formFieldState.hasError
                         ? (decoration?.closedErrorBorder)
                         : enabled
-                            ? decoration?.closedBorder
+                            ? decoration?.closedBorder ??
+                                Border.all(
+                                  color: Theme.of(context).colorScheme.outline,
+                                  width: 1,
+                                )
                             : disabledDecoration?.border,
                     borderRadius: widget.borderRadius != null
                         ? SmoothBorderRadius(
