@@ -21,7 +21,7 @@ class DecoratedDropdown extends StatelessWidget {
       onChanged: (value) {
         log('DecoratedDropdown onChanged value: $value');
       },
-      headerBuilder: (context, selectedItem) {
+      headerBuilder: (context, selectedItem, enabled) {
         return Text(
           selectedItem.toString(),
           style: const TextStyle(
@@ -140,6 +140,7 @@ class MultiSelectDecoratedDropdown extends StatelessWidget {
           color: Colors.yellow,
           fontSize: 16,
         ),
+        prefixIcon: const Icon(Icons.person, color: Colors.yellow),
         closedSuffixIcon: const Icon(
           Icons.keyboard_arrow_down,
           color: Colors.yellow,

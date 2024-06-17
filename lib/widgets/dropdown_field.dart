@@ -8,15 +8,13 @@ const _defaultOverlayIconDown = Icon(
 
 class _DropDownField<T> extends StatefulWidget {
   final VoidCallback onTap;
-  final ValueNotifier<T?> selectedItemNotifier;
+  final SingleSelectController<T?> selectedItemNotifier;
   final String hintText;
   final Color? fillColor;
   final BoxBorder? border;
   final BorderRadius? borderRadius;
-  final String? errorText;
-  final TextStyle? errorStyle, headerStyle, hintStyle;
-  final BorderSide? errorBorderSide;
-  final Widget? suffixIcon;
+  final TextStyle? headerStyle, hintStyle;
+  final Widget? prefixIcon, suffixIcon;
   final List<BoxShadow>? shadow;
   final EdgeInsets? headerPadding;
   final int maxLines;
@@ -24,7 +22,8 @@ class _DropDownField<T> extends StatefulWidget {
   final _HeaderListBuilder<T>? headerListBuilder;
   final _HintBuilder? hintBuilder;
   final _DropdownType dropdownType;
-  final _ValueNotifierList<T> selectedItemsNotifier;
+  final bool enabled;
+  final MultiSelectController<T> selectedItemsNotifier;
 
   const _DropDownField({
     super.key,
@@ -37,17 +36,16 @@ class _DropDownField<T> extends StatefulWidget {
     this.fillColor,
     this.border,
     this.borderRadius,
-    this.errorText,
-    this.errorStyle,
     this.hintStyle,
     this.headerStyle,
-    this.errorBorderSide,
     this.headerBuilder,
     this.shadow,
     this.headerListBuilder,
     this.hintBuilder,
+    this.prefixIcon,
     this.suffixIcon,
     this.headerPadding,
+    this.enabled = true,
   });
 
   @override
@@ -67,19 +65,19 @@ class _DropDownFieldState<T> extends State<_DropDownField<T>> {
 
   Widget hintBuilder(BuildContext context) {
     return widget.hintBuilder != null
-        ? widget.hintBuilder!(context, widget.hintText)
-        : defaultHintBuilder(widget.hintText);
+        ? widget.hintBuilder!(context, widget.hintText, widget.enabled)
+        : defaultHintBuilder(widget.hintText, widget.enabled);
   }
 
   Widget headerBuilder(BuildContext context) {
     return widget.headerBuilder != null
-        ? widget.headerBuilder!(context, selectedItem as T)
+        ? widget.headerBuilder!(context, selectedItem as T, widget.enabled)
         : defaultHeaderBuilder(oneItem: selectedItem);
   }
 
   Widget headerListBuilder(BuildContext context) {
     return widget.headerListBuilder != null
-        ? widget.headerListBuilder!(context, selectedItems)
+        ? widget.headerListBuilder!(context, selectedItems, widget.enabled)
         : defaultHeaderBuilder(itemList: selectedItems);
   }
 
@@ -92,7 +90,7 @@ class _DropDownFieldState<T> extends State<_DropDownField<T>> {
     );
   }
 
-  Widget defaultHintBuilder(String hint) {
+  Widget defaultHintBuilder(String hint, bool enabled) {
     return Text(
       hint,
       maxLines: 1,
@@ -129,6 +127,10 @@ class _DropDownFieldState<T> extends State<_DropDownField<T>> {
         ),
         child: Row(
           children: [
+            if (widget.prefixIcon != null) ...[
+              widget.prefixIcon!,
+              const SizedBox(width: 12),
+            ],
             Expanded(
               child: switch (widget.dropdownType) {
                 _DropdownType.singleSelect => selectedItem != null
@@ -140,7 +142,14 @@ class _DropDownFieldState<T> extends State<_DropDownField<T>> {
               },
             ),
             const SizedBox(width: 12),
-            widget.suffixIcon ?? _defaultOverlayIconDown,
+            widget.suffixIcon ??
+                (widget.enabled
+                    ? _defaultOverlayIconDown
+                    : Icon(
+                        Icons.keyboard_arrow_down_rounded,
+                        color: Colors.black.withOpacity(.5),
+                        size: 20,
+                      )),
           ],
         ),
       ),

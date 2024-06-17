@@ -12,17 +12,28 @@ const _list = [
   'Italian',
 ];
 
-class SearchDropdown extends StatelessWidget {
+class SearchDropdown extends StatefulWidget {
   const SearchDropdown({Key? key}) : super(key: key);
+
+  @override
+  State<SearchDropdown> createState() => _SearchDropdownState();
+}
+
+class _SearchDropdownState extends State<SearchDropdown> {
+  String? selectedItem = _list[2];
 
   @override
   Widget build(BuildContext context) {
     return CustomDropdown<String>.search(
       hintText: 'Select cuisines',
       items: _list,
+      initialItem: selectedItem,
       overlayHeight: 342,
       onChanged: (value) {
         log('SearchDropdown onChanged value: $value');
+        setState(() {
+          selectedItem = value;
+        });
       },
     );
   }
