@@ -688,6 +688,7 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
                   link: layerLink,
                   child: _DropDownField<T>(
                     onTap: showCallback,
+                    height: widget.height,
                     selectedItemNotifier: selectedItemNotifier,
                     border: formFieldState.hasError
                         ? (decoration?.closedErrorBorder)
