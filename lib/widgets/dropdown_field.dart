@@ -117,7 +117,14 @@ class _DropDownFieldState<T> extends State<_DropDownField<T>> {
         child: MyTextBox(
           controller: TextEditingController(text: selectedItem.toString()),
           hint: widget.hintText,
-          suffixIcon: widget.suffixIcon,
+          suffixIcon: widget.suffixIcon ??
+              (widget.enabled
+                  ? _defaultOverlayIconDown
+                  : Icon(
+                      Icons.keyboard_arrow_down_rounded,
+                      color: Colors.black.withOpacity(.5),
+                      size: 20,
+                    )),
           enabled: widget.enabled,
           onTap: widget.onTap,
           readOnly: true,
