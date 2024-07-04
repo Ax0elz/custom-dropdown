@@ -3,7 +3,7 @@ part of '../custom_dropdown.dart';
 // overlay icon
 const _defaultOverlayIconDown = Icon(
   CupertinoIcons.chevron_down,
-  size: 18,
+  size: 16,
 );
 
 class _DropDownField<T> extends StatefulWidget {
@@ -123,7 +123,7 @@ class _DropDownFieldState<T> extends State<_DropDownField<T>> {
                   : Icon(
                       Icons.keyboard_arrow_down_rounded,
                       color: Colors.black.withOpacity(.5),
-                      size: 20,
+                      size: 16,
                     )),
           enabled: widget.enabled,
           onTap: widget.onTap,
