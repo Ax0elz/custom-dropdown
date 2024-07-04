@@ -172,7 +172,6 @@ class CustomDropdown<T> extends StatefulWidget {
   final _DropdownType _dropdownType;
 
   final double? borderRadius;
-  final double? height;
 
   CustomDropdown({
     super.key,
@@ -203,7 +202,6 @@ class CustomDropdown<T> extends StatefulWidget {
     this.errorStyle,
     this.noResultFoundText,
     this.borderRadius,
-    this.height = 38,
     this.enabled = true,
     this.disabledDecoration,
   })  : assert(
@@ -263,7 +261,6 @@ class CustomDropdown<T> extends StatefulWidget {
     this.hideSelectedFieldWhenExpanded = false,
     this.errorStyle,
     this.borderRadius,
-    this.height = 38,
     this.enabled = true,
     this.disabledDecoration,
     this.closeDropDownOnClearFilterSearch = false,
@@ -325,7 +322,6 @@ class CustomDropdown<T> extends StatefulWidget {
     this.hideSelectedFieldWhenExpanded = false,
     this.errorStyle,
     this.borderRadius,
-    this.height = 38,
   })  : assert(
           initialItem == null || controller == null,
           'Only one of initialItem or controller can be specified at a time',
@@ -368,7 +364,6 @@ class CustomDropdown<T> extends StatefulWidget {
     this.listItemPadding,
     this.errorStyle,
     this.borderRadius,
-    this.height = 38,
     this.enabled = true,
     this.disabledDecoration,
   })  : assert(
@@ -432,7 +427,6 @@ class CustomDropdown<T> extends StatefulWidget {
     this.listItemPadding,
     this.errorStyle,
     this.borderRadius,
-    this.height = 38,
     this.enabled = true,
     this.disabledDecoration,
     this.closeDropDownOnClearFilterSearch = false,
@@ -496,7 +490,6 @@ class CustomDropdown<T> extends StatefulWidget {
     this.hideSelectedFieldWhenExpanded = false,
     this.borderRadius,
     this.errorStyle,
-    this.height = 38,
   })  : assert(
           initialItems == null || multiSelectController == null,
           'Only one of initialItems or controller can be specified at a time',
@@ -688,7 +681,6 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
                   link: layerLink,
                   child: _DropDownField<T>(
                     onTap: showCallback,
-                    height: widget.height,
                     selectedItemNotifier: selectedItemNotifier,
                     border: formFieldState.hasError
                         ? (decoration?.closedErrorBorder)
