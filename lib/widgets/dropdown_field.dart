@@ -142,14 +142,17 @@ class _DropDownFieldState<T> extends State<_DropDownField<T>> {
               },
             ),
             const SizedBox(width: 12),
-            widget.suffixIcon ??
-                (widget.enabled
-                    ? _defaultOverlayIconDown
-                    : Icon(
-                        Icons.keyboard_arrow_down_rounded,
-                        color: Colors.black.withOpacity(.5),
-                        size: 20,
-                      )),
+            SizedBox.fromSize(
+              size: const Size(28 + 8, 28),
+              child: widget.suffixIcon ??
+                  (widget.enabled
+                      ? _defaultOverlayIconDown
+                      : Icon(
+                          Icons.keyboard_arrow_down_rounded,
+                          color: Colors.black.withOpacity(.5),
+                          size: 20,
+                        )),
+            ),
           ],
         ),
       ),
