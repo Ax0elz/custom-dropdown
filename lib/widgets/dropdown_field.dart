@@ -113,51 +113,62 @@ class _DropDownFieldState<T> extends State<_DropDownField<T>> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: widget.onTap,
-      child: Container(
-        padding: widget.headerPadding ?? _defaultHeaderPadding,
-        decoration: BoxDecoration(
-          color: widget.fillColor ??
-              Theme.of(context).colorScheme.outline.withOpacity(
-                    Theme.of(context).brightness == Brightness.light ? .4 : .1,
-                  ),
-          border: widget.border,
-          borderRadius: widget.borderRadius ?? _defaultBorderRadius,
-          boxShadow: widget.shadow,
-        ),
-        child: Row(
-          children: [
-            if (widget.prefixIcon != null) ...[
-              widget.prefixIcon!,
-              const SizedBox(width: 12),
-            ],
-            Expanded(
-              child: switch (widget.dropdownType) {
-                _DropdownType.singleSelect => selectedItem != null
-                    ? headerBuilder(context)
-                    : hintBuilder(context),
-                _DropdownType.multipleSelect => selectedItems.isNotEmpty
-                    ? headerListBuilder(context)
-                    : hintBuilder(context),
-              },
-            ),
-            const SizedBox(width: 12),
-            ConstrainedBox(
-              constraints: BoxConstraints.tight(
-                const Size(28 + 8, 28),
-              ),
-              child: widget.suffixIcon ??
-                  (widget.enabled
-                      ? _defaultOverlayIconDown
-                      : Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: Colors.black.withOpacity(.5),
-                          size: 20,
-                        )),
-            ),
-          ],
-        ),
-      ),
-    );
+        onTap: widget.onTap,
+        child: MyTextBox(
+          controller: TextEditingController(text: selectedItem.toString()),
+          hint: widget.hintText,
+          suffixIcon: widget.suffixIcon,
+          enabled: widget.enabled,
+          onTap: widget.onTap,
+          readOnly: true,
+          borderRadius: widget.borderRadius,
+        )
+
+        //  Container(
+        //   padding: widget.headerPadding ?? _defaultHeaderPadding,
+
+        //   decoration: BoxDecoration(
+        //     color: widget.fillColor ??
+        //         Theme.of(context).colorScheme.outline.withOpacity(
+        //               Theme.of(context).brightness == Brightness.light ? .4 : .1,
+        //             ),
+        //     border: widget.border,
+        //     borderRadius: widget.borderRadius ?? _defaultBorderRadius,
+        //     boxShadow: widget.shadow,
+        //   ),
+        //   child: Row(
+        //     children: [
+        //       if (widget.prefixIcon != null) ...[
+        //         widget.prefixIcon!,
+        //         const SizedBox(width: 12),
+        //       ],
+        //       Expanded(
+        //         child: switch (widget.dropdownType) {
+        //           _DropdownType.singleSelect => selectedItem != null
+        //               ? headerBuilder(context)
+        //               : hintBuilder(context),
+        //           _DropdownType.multipleSelect => selectedItems.isNotEmpty
+        //               ? headerListBuilder(context)
+        //               : hintBuilder(context),
+        //         },
+        //       ),
+        //       const SizedBox(width: 12),
+        //       ConstrainedBox(
+        //         constraints: BoxConstraints.tight(
+        //           const Size(28, 28),
+        //         ),
+        //         child: widget.suffixIcon ??
+        //             (widget.enabled
+        //                 ? _defaultOverlayIconDown
+        //                 : Icon(
+        //                     Icons.keyboard_arrow_down_rounded,
+        //                     color: Colors.black.withOpacity(.5),
+        //                     size: 20,
+        //                   )),
+        //       ),
+        //     ],
+        //   ),
+        // ),
+        );
   }
 }
