@@ -359,7 +359,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                   },
                                   child: Padding(
                                     padding: widget.headerPadding ??
-                                        _defaultHeaderPadding,
+                                        _defaultDropdownHeaderPadding,
                                     child: Row(
                                       children: [
                                         if (widget.decoration?.prefixIcon !=

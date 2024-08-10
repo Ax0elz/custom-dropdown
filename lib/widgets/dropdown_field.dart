@@ -118,7 +118,7 @@ class _DropDownFieldState<T> extends State<_DropDownField<T>> {
       onTap: widget.onTap,
       child: Container(
         height: widget.height,
-        padding: widget.headerPadding ?? _defaultDropdownHeaderPadding,
+        padding: widget.headerPadding ?? _defaultHeaderPadding,
         decoration: BoxDecoration(
           color: widget.fillColor ??
               Theme.of(context).colorScheme.outline.withOpacity(
