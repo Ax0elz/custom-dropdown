@@ -91,11 +91,14 @@ class _DropDownFieldState<T> extends State<_DropDownField<T>> {
   }
 
   Widget defaultHintBuilder(String hint, bool enabled) {
-    return Text(
-      hint,
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
-      style: widget.hintStyle ?? Theme.of(context).textTheme.labelMedium,
+    return SizedBox(
+      height: Theme.of(context).textTheme.titleSmall!.height,
+      child: Text(
+        hint,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: widget.hintStyle ?? Theme.of(context).textTheme.labelMedium,
+      ),
     );
   }
 
