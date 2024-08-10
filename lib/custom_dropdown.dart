@@ -173,6 +173,8 @@ class CustomDropdown<T> extends StatefulWidget {
 
   final double? borderRadius;
 
+  final double? height;
+
   CustomDropdown({
     super.key,
     required this.items,
@@ -204,6 +206,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.borderRadius,
     this.enabled = true,
     this.disabledDecoration,
+    this.height,
   })  : assert(
           initialItem == null || controller == null,
           'Only one of initialItem or controller can be specified at a time',
@@ -264,6 +267,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.enabled = true,
     this.disabledDecoration,
     this.closeDropDownOnClearFilterSearch = false,
+    this.height,
   })  : assert(
           initialItem == null || controller == null,
           'Only one of initialItem or controller can be specified at a time',
@@ -322,6 +326,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.hideSelectedFieldWhenExpanded = false,
     this.errorStyle,
     this.borderRadius,
+    this.height,
   })  : assert(
           initialItem == null || controller == null,
           'Only one of initialItem or controller can be specified at a time',
@@ -366,6 +371,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.borderRadius,
     this.enabled = true,
     this.disabledDecoration,
+    this.height,
   })  : assert(
           initialItems == null || multiSelectController == null,
           'Only one of initialItems or controller can be specified at a time',
@@ -430,6 +436,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.enabled = true,
     this.disabledDecoration,
     this.closeDropDownOnClearFilterSearch = false,
+    this.height,
   })  : assert(
           initialItems == null || multiSelectController == null,
           'Only one of initialItems or controller can be specified at a time',
@@ -490,6 +497,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.hideSelectedFieldWhenExpanded = false,
     this.borderRadius,
     this.errorStyle,
+    this.height,
   })  : assert(
           initialItems == null || multiSelectController == null,
           'Only one of initialItems or controller can be specified at a time',
@@ -680,6 +688,7 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
                 return CompositedTransformTarget(
                   link: layerLink,
                   child: _DropDownField<T>(
+                    height: widget.height,
                     onTap: showCallback,
                     selectedItemNotifier: selectedItemNotifier,
                     border: formFieldState.hasError
