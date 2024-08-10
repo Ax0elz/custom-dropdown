@@ -7,7 +7,7 @@ const _defaultOverlayIconUp = Icon(
 
 const _defaultHeaderPadding = EdgeInsets.symmetric(vertical: 8, horizontal: 12);
 const _defaultDropdownHeaderPadding =
-    EdgeInsets.symmetric(vertical: 16, horizontal: 16);
+    EdgeInsets.only(left: 16, top: 12, bottom: 8, right: 16);
 const _overlayOuterPadding =
     EdgeInsetsDirectional.only(bottom: 12, start: 12, end: 12);
 
