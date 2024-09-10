@@ -95,6 +95,39 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
   late ScrollController scrollController;
   final key1 = GlobalKey(), key2 = GlobalKey();
 
+  // Add this method for error logging
+  void _logError(String message, dynamic error, StackTrace? stackTrace) {
+    // Replace this with your preferred error logging method
+    log('Dropdown Error: $message');
+    log('Error: $error');
+    if (stackTrace != null) log('StackTrace: $stackTrace');
+  }
+
+  // Modify this method
+  void safeSetState(VoidCallback fn) {
+    if (mounted) {
+      try {
+        setState(fn);
+      } catch (e, stackTrace) {
+        _logError('Error in setState', e, stackTrace);
+      }
+    }
+  }
+
+  // Modify this method
+  void onItemSelect(T value) {
+    try {
+      widget.onItemSelect(value);
+      if (widget.dropdownType == _DropdownType.singleSelect) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          safeSetState(() => displayOverly = false);
+        });
+      }
+    } catch (e, stackTrace) {
+      _logError('Error in onItemSelect', e, stackTrace);
+    }
+  }
+
   Widget hintBuilder(BuildContext context) {
     return widget.hintBuilder != null
         ? widget.hintBuilder!(context, widget.hintText, true)
@@ -236,17 +269,6 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
     }
   }
 
-  void onItemSelect(T value) {
-    widget.onItemSelect(value);
-    if (widget.dropdownType == _DropdownType.singleSelect) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) {
-          setState(() => displayOverly = false);
-        }
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     // decoration
@@ -320,7 +342,15 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
               child: Material(
                 color: Colors.transparent,
                 child: _AnimatedSection(
-                  animationDismissed: widget.hideOverlay,
+                  animationDismissed: () {
+                    try {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        widget.hideOverlay();
+                      });
+                    } catch (e, stackTrace) {
+                      _logError('Error in hideOverlay', e, stackTrace);
+                    }
+                  },
                   expand: displayOverly,
                   axisAlignment: displayOverlayBottom ? 1.0 : -1.0,
                   child: SizedBox(
@@ -359,12 +389,18 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                 GestureDetector(
                                   behavior: HitTestBehavior.opaque,
                                   onTap: () {
-                                    WidgetsBinding.instance
-                                        .addPostFrameCallback((_) {
-                                      if (mounted) {
-                                        setState(() => displayOverly = false);
-                                      }
-                                    });
+                                    try {
+                                      WidgetsBinding.instance
+                                          .addPostFrameCallback((_) {
+                                        safeSetState(
+                                            () => displayOverly = false);
+                                      });
+                                    } catch (e, stackTrace) {
+                                      _logError(
+                                          'Error in GestureDetector onTap',
+                                          e,
+                                          stackTrace);
+                                    }
                                   },
                                   child: Padding(
                                     padding: widget.headerPadding ??
@@ -411,12 +447,18 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                   GestureDetector(
                                     behavior: HitTestBehavior.opaque,
                                     onTap: () {
-                                      WidgetsBinding.instance
-                                          .addPostFrameCallback((_) {
-                                        if (mounted) {
-                                          setState(() => displayOverly = false);
-                                        }
-                                      });
+                                      try {
+                                        WidgetsBinding.instance
+                                            .addPostFrameCallback((_) {
+                                          safeSetState(
+                                              () => displayOverly = false);
+                                        });
+                                      } catch (e, stackTrace) {
+                                        _logError(
+                                            'Error in GestureDetector onTap',
+                                            e,
+                                            stackTrace);
+                                      }
                                     },
                                     child: Padding(
                                       padding: widget.headerPadding ??
@@ -474,12 +516,18 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                   GestureDetector(
                                     behavior: HitTestBehavior.opaque,
                                     onTap: () {
-                                      WidgetsBinding.instance
-                                          .addPostFrameCallback((_) {
-                                        if (mounted) {
-                                          setState(() => displayOverly = false);
-                                        }
-                                      });
+                                      try {
+                                        WidgetsBinding.instance
+                                            .addPostFrameCallback((_) {
+                                          safeSetState(
+                                              () => displayOverly = false);
+                                        });
+                                      } catch (e, stackTrace) {
+                                        _logError(
+                                            'Error in GestureDetector onTap',
+                                            e,
+                                            stackTrace);
+                                      }
                                     },
                                     child: Padding(
                                       padding: const EdgeInsetsDirectional.only(
