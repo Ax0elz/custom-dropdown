@@ -24,7 +24,9 @@ class _AnimatedSectionState extends State<_AnimatedSection>
 
   void statusListenerFunc(AnimationStatus status) {
     if (status == AnimationStatus.dismissed) {
-      widget.animationDismissed();
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        widget.animationDismissed();
+      });
     }
   }
 
@@ -51,11 +53,13 @@ class _AnimatedSectionState extends State<_AnimatedSection>
 
   void runExpand() {
     if (mounted) {
-      if (widget.expand) {
-        animController.forward();
-      } else {
-        animController.reverse();
-      }
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (widget.expand) {
+          animController.forward();
+        } else {
+          animController.reverse();
+        }
+      });
     }
   }
 
