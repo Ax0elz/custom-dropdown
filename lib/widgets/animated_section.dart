@@ -22,6 +22,12 @@ class _AnimatedSectionState extends State<_AnimatedSection>
   late AnimationController animController;
   late Animation<double> animation;
 
+  void statusListenerFunc(AnimationStatus status) {
+    if (status == AnimationStatus.dismissed) {
+      widget.animationDismissed();
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -33,11 +39,9 @@ class _AnimatedSectionState extends State<_AnimatedSection>
     animController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 300),
-    )..addStatusListener((status) {
-        if (status == AnimationStatus.dismissed) {
-          if (mounted) widget.animationDismissed();
-        }
-      });
+    );
+
+    animController.addStatusListener(statusListenerFunc);
 
     animation = CurvedAnimation(
       parent: animController,
@@ -63,7 +67,7 @@ class _AnimatedSectionState extends State<_AnimatedSection>
 
   @override
   void dispose() {
-    animController.removeListener(() {});
+    animController.removeStatusListener(statusListenerFunc);
     animController.dispose();
     super.dispose();
   }
