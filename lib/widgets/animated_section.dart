@@ -35,7 +35,7 @@ class _AnimatedSectionState extends State<_AnimatedSection>
       duration: const Duration(milliseconds: 300),
     )..addStatusListener((status) {
         if (status == AnimationStatus.dismissed) {
-          widget.animationDismissed();
+          if (mounted) widget.animationDismissed();
         }
       });
 

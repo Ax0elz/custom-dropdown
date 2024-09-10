@@ -36,10 +36,12 @@ class _OverlayBuilderState extends State<_OverlayBuilder> {
   }
 
   void hideOverlay() {
-    overlayController.hide();
+    if (mounted) {
+      overlayController.hide();
 
-    if (widget.visibility != null) {
-      widget.visibility!(false);
+      if (widget.visibility != null) {
+        widget.visibility!(false);
+      }
     }
   }
 
