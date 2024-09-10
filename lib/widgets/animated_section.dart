@@ -46,10 +46,12 @@ class _AnimatedSectionState extends State<_AnimatedSection>
   }
 
   void runExpand() {
-    if (widget.expand) {
-      animController.forward();
-    } else {
-      animController.reverse();
+    if (mounted) {
+      if (widget.expand) {
+        animController.forward();
+      } else {
+        animController.reverse();
+      }
     }
   }
 
