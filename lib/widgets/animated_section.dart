@@ -22,56 +22,48 @@ class _AnimatedSectionState extends State<_AnimatedSection>
   late AnimationController animController;
   late Animation<double> animation;
 
-  void statusListenerFunc(AnimationStatus status) {
-    if (status == AnimationStatus.dismissed) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        widget.animationDismissed();
-      });
-    }
-  }
-
   @override
   void initState() {
     super.initState();
-    prepareAnimations();
-    runExpand();
-  }
-
-  void prepareAnimations() {
     animController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 300),
     );
 
-    animController.addStatusListener(statusListenerFunc);
-
     animation = CurvedAnimation(
       parent: animController,
       curve: Curves.linearToEaseOut,
     );
+
+    animController.addStatusListener(_statusListener);
+    _updateAnimationState();
   }
 
-  void runExpand() {
-    if (mounted) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (widget.expand) {
-          animController.forward();
-        } else {
-          animController.reverse();
-        }
-      });
+  void _statusListener(AnimationStatus status) {
+    if (status == AnimationStatus.dismissed) {
+      widget.animationDismissed();
+    }
+  }
+
+  void _updateAnimationState() {
+    if (widget.expand) {
+      animController.forward();
+    } else {
+      animController.reverse();
     }
   }
 
   @override
   void didUpdateWidget(_AnimatedSection oldWidget) {
     super.didUpdateWidget(oldWidget);
-    runExpand();
+    if (oldWidget.expand != widget.expand) {
+      _updateAnimationState();
+    }
   }
 
   @override
   void dispose() {
-    animController.removeStatusListener(statusListenerFunc);
+    animController.removeStatusListener(_statusListener);
     animController.dispose();
     super.dispose();
   }
