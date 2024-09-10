@@ -239,7 +239,11 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
   void onItemSelect(T value) {
     widget.onItemSelect(value);
     if (widget.dropdownType == _DropdownType.singleSelect) {
-      setState(() => displayOverly = false);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) {
+          setState(() => displayOverly = false);
+        }
+      });
     }
   }
 
@@ -355,7 +359,12 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                 GestureDetector(
                                   behavior: HitTestBehavior.opaque,
                                   onTap: () {
-                                    setState(() => displayOverly = false);
+                                    WidgetsBinding.instance
+                                        .addPostFrameCallback((_) {
+                                      if (mounted) {
+                                        setState(() => displayOverly = false);
+                                      }
+                                    });
                                   },
                                   child: Padding(
                                     padding: widget.headerPadding ??
@@ -402,7 +411,12 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                   GestureDetector(
                                     behavior: HitTestBehavior.opaque,
                                     onTap: () {
-                                      setState(() => displayOverly = false);
+                                      WidgetsBinding.instance
+                                          .addPostFrameCallback((_) {
+                                        if (mounted) {
+                                          setState(() => displayOverly = false);
+                                        }
+                                      });
                                     },
                                     child: Padding(
                                       padding: widget.headerPadding ??
@@ -460,7 +474,12 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                   GestureDetector(
                                     behavior: HitTestBehavior.opaque,
                                     onTap: () {
-                                      setState(() => displayOverly = false);
+                                      WidgetsBinding.instance
+                                          .addPostFrameCallback((_) {
+                                        if (mounted) {
+                                          setState(() => displayOverly = false);
+                                        }
+                                      });
                                     },
                                     child: Padding(
                                       padding: const EdgeInsetsDirectional.only(
