@@ -61,6 +61,7 @@ class _AnimatedSectionState extends State<_AnimatedSection>
 
   @override
   void dispose() {
+    animController.removeListener(() {});
     animController.dispose();
     super.dispose();
   }
