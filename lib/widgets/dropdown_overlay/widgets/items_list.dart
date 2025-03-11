@@ -45,14 +45,20 @@ class _ItemsList<T> extends StatelessWidget {
             color: Colors.transparent,
             child: InkWell(
               splashColor: decoration?.splashColor ??
-                  Theme.of(context).colorScheme.outline.withOpacity(0.2),
+                  Theme.of(context).colorScheme.outline.withValues(alpha: 0.2),
               highlightColor: decoration?.highlightColor ??
-                  Theme.of(context).colorScheme.secondary.withOpacity(0.2),
+                  Theme.of(context)
+                      .colorScheme
+                      .secondary
+                      .withValues(alpha: 0.2),
               onTap: () => onItemSelect(items[index]),
               child: Ink(
                 color: selected
                     ? (decoration?.selectedColor ??
-                        Theme.of(context).colorScheme.outline.withOpacity(0.2))
+                        Theme.of(context)
+                            .colorScheme
+                            .outline
+                            .withValues(alpha: 0.2))
                     : Colors.transparent,
                 padding: listItemPadding,
                 child: listItemBuilder(

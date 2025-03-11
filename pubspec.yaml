@@ -10,19 +10,17 @@ environment:
   flutter: '>=3.0.0'
 
 dependencies:
-  figma_squircle: ^0.5.3
+  figma_squircle: ^0.6.3
   flutter:
     sdk: flutter
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
 
-flutter:
 
-funding:
-  - https://buymeacoffee.com/abdullahchauhan
+
 
 screenshots:
   - description: 'Custom dropdown Preview'
@@ -35,7 +33,7 @@ screenshots:
     path: screenshots/example_3.jpg
 
 topics:
-  - ui
+  
   - dropdown
   - spinner
   - widget

@@ -85,7 +85,7 @@ InputDecoration mainInputDecorationEnabled({
       const Size(28 + 8, 28),
     ),
     prefixStyle: Theme.of(context).textTheme.labelLarge,
-    hoverColor: Theme.of(context).colorScheme.outline.withOpacity(.4),
+    hoverColor: Theme.of(context).colorScheme.outline.withValues(alpha: .4),
     border: OutlineInputBorder(
       borderSide: const BorderSide(color: Colors.transparent, width: 0.0),
       borderRadius: borderRadius,
@@ -101,7 +101,7 @@ InputDecoration mainInputDecorationEnabled({
     ),
     focusedBorder: OutlineInputBorder(
       borderSide: BorderSide(
-        color: Theme.of(context).colorScheme.primary.withOpacity(.4),
+        color: Theme.of(context).colorScheme.primary.withValues(alpha: .4),
         width: 1,
       ),
       borderRadius: borderRadius,
@@ -121,8 +121,8 @@ InputDecoration mainInputDecorationEnabled({
         const TextStyle(height: 0, fontSize: 0, color: Colors.transparent),
     filled: true,
     fillColor: bgColor ??
-        Theme.of(context).colorScheme.outline.withOpacity(
-              Theme.of(context).brightness == Brightness.light ? .4 : .1,
+        Theme.of(context).colorScheme.outline.withValues(
+              alpha: Theme.of(context).brightness == Brightness.light ? .4 : .1,
             ),
     // counterText: ' ',
     // counterStyle: const TextStyle(height: 0, fontSize: 0, color: Colors.transparent),

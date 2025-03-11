@@ -305,8 +305,8 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                     [
                       BoxShadow(
                         color: Theme.of(context).brightness == Brightness.light
-                            ? const Color(0xFF7090b0).withOpacity(.24)
-                            : Colors.black.withOpacity(.2),
+                            ? const Color(0xFF7090b0).withValues(alpha: .24)
+                            : Colors.black.withValues(alpha: .2),
                         offset: const Offset(0, 4),
                         blurRadius: 25,
                         spreadRadius: 0,
