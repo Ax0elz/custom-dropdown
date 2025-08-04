@@ -541,14 +541,10 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
     if (widget.canCloseOutsideBounds) {
       return Stack(
         children: [
-          GestureDetector(
-            behavior: HitTestBehavior.translucent,
-            onTap: () => setState(() => displayOverly = false),
-            child: Container(
-              width: MediaQuery.sizeOf(context).width,
-              height: MediaQuery.sizeOf(context).height,
-              color: Colors.transparent,
-            ),
+          ModalBarrier(
+            color: Colors.transparent,
+            dismissible: true,
+            onDismiss: () => setState(() => displayOverly = false),
           ),
           child,
         ],
