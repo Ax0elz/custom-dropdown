@@ -542,6 +542,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
       return Stack(
         children: [
           GestureDetector(
+            behavior: HitTestBehavior.translucent,
             onTap: () => setState(() => displayOverly = false),
             child: Container(
               width: MediaQuery.sizeOf(context).width,

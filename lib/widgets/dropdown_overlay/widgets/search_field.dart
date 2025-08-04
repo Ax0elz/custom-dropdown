@@ -82,12 +82,12 @@ class _SearchFieldState<T> extends State<_SearchField<T>> {
     List<T> result = [];
     try {
       result = await widget.futureRequest!(val);
-      widget.onFutureRequestLoading!(false);
+      widget.onFutureRequestLoading?.call(false);
     } catch (_) {
-      widget.onFutureRequestLoading!(false);
+      widget.onFutureRequestLoading?.call(false);
     }
     widget.onSearchedItems(isFieldEmpty ? widget.items : result);
-    widget.mayFoundResult!(result.isNotEmpty);
+    widget.mayFoundResult?.call(result.isNotEmpty);
 
     if (isFieldEmpty) {
       isFieldEmpty = false;
@@ -111,7 +111,7 @@ class _SearchFieldState<T> extends State<_SearchField<T>> {
           if (widget.searchType != null &&
               widget.searchType == _SearchType.onRequestData &&
               val.isNotEmpty) {
-            widget.onFutureRequestLoading!(true);
+            widget.onFutureRequestLoading?.call(true);
 
             if (widget.futureRequestDelay != null) {
               _delayTimer?.cancel();
