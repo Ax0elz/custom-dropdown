@@ -193,7 +193,9 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
       double y = render1.localToGlobal(Offset.zero).dy;
       if (screenHeight - y < render2.size.height) {
         displayOverlayBottom = false;
-        setState(() {});
+        if (mounted) {
+          setState(() {});
+        }
       }
     });
 
@@ -393,7 +395,9 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                     items: widget.items,
                                     searchHintText: widget.searchHintText,
                                     onSearchedItems: (val) {
-                                      setState(() => items = val);
+                                      if (mounted) {
+                                        setState(() => items = val);
+                                      }
                                     },
                                     decoration:
                                         decoration?.searchFieldDecoration,
@@ -420,7 +424,9 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                               searchHintText:
                                                   widget.searchHintText,
                                               onSearchedItems: (val) {
-                                                setState(() => items = val);
+                                                if (mounted) {
+                                                  setState(() => items = val);
+                                                }
                                               },
                                               decoration: decoration
                                                   ?.searchFieldDecoration,
@@ -441,15 +447,19 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                     items: widget.items,
                                     searchHintText: widget.searchHintText,
                                     onFutureRequestLoading: (val) {
-                                      setState(() {
-                                        isSearchRequestLoading = val;
-                                      });
+                                      if (mounted) {
+                                        setState(() {
+                                          isSearchRequestLoading = val;
+                                        });
+                                      }
                                     },
                                     futureRequest: widget.futureRequest,
                                     futureRequestDelay:
                                         widget.futureRequestDelay,
                                     onSearchedItems: (val) {
-                                      setState(() => items = val);
+                                      if (mounted) {
+                                        setState(() => items = val);
+                                      }
                                     },
                                     mayFoundResult: (val) =>
                                         mayFoundSearchRequestResult = val,
@@ -481,16 +491,21 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                               searchHintText:
                                                   widget.searchHintText,
                                               onFutureRequestLoading: (val) {
-                                                setState(() {
-                                                  isSearchRequestLoading = val;
-                                                });
+                                                if (mounted) {
+                                                  setState(() {
+                                                    isSearchRequestLoading =
+                                                        val;
+                                                  });
+                                                }
                                               },
                                               futureRequest:
                                                   widget.futureRequest,
                                               futureRequestDelay:
                                                   widget.futureRequestDelay,
                                               onSearchedItems: (val) {
-                                                setState(() => items = val);
+                                                if (mounted) {
+                                                  setState(() => items = val);
+                                                }
                                               },
                                               mayFoundResult: (val) =>
                                                   mayFoundSearchRequestResult =

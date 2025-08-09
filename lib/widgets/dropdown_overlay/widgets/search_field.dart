@@ -81,7 +81,9 @@ class _SearchFieldState<T> extends State<_SearchField<T>> {
   void searchRequest(String val) async {
     List<T> result = [];
     try {
-      result = await widget.futureRequest!(val);
+      if (widget.futureRequest != null) {
+        result = await widget.futureRequest!(val);
+      }
       widget.onFutureRequestLoading?.call(false);
     } catch (_) {
       widget.onFutureRequestLoading?.call(false);
